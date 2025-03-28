@@ -11,16 +11,19 @@
   "dependencies": {
     "@ai-sdk/openai": "^1.3.3",
     "@ai-sdk/react": "^1.2.2",
+    "@radix-ui/react-slot": "^1.1.2",
     "@upstash/rag-chat": "^2.0.3",
     "@upstash/redis": "^1.34.6",
     "ai": "^4.2.6",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.484.0",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "shadcn-ui": "^0.9.5",
-    "tailwind-merge": "^3.0.2"
+    "tailwind-merge": "^3.0.2",
+    "tw-animate-css": "^1.2.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
