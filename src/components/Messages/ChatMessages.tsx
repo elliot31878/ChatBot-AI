@@ -1,14 +1,14 @@
 import { type Message as TMessage } from "ai/react";
 import { MessageBox } from "./component/MessageBox/MessageBox";
-import { MessageSquare } from "lucide-react";
-
+import { TStatus } from "../Wrapper/ChatWrapper";
 interface IMessagesProps {
   messages: TMessage[];
+  status: TStatus;
 }
 
 export function ChatMessages({ messages }: IMessagesProps) {
   return (
-    <main className="flex max-h-[calc(100vh-3.5rem-7rem)] flex-1 flex-col overflow-y-auto">
+    <main className="flex max-h-[calc(100vh-13rem)] flex-1 flex-col overflow-y-auto">
       {messages.length > 0 ? (
         messages.map((message, i) => (
           <MessageBox
@@ -19,9 +19,9 @@ export function ChatMessages({ messages }: IMessagesProps) {
         ))
       ) : (
         <section className="flex-1 flex flex-col items-center justify-center gap-2">
-          <MessageSquare className="size-8 text-blue-500" />
-          <h3 className="font-semibold text-xl text-white">{`You're all set!`}</h3>
-          <span>Ask your first question to get started.</span>
+          <h1 className="font-semibold text-3xl text-white">
+            What Can I Help With?
+          </h1>
         </section>
       )}
     </main>
