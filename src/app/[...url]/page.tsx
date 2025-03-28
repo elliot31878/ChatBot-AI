@@ -1,6 +1,5 @@
 import { ChatWrapper } from "@/components/Wrapper/ChatWrapper";
 import { ragChat } from "@/lib/rag-chat";
-import { redis } from "@/lib/redis";
 import { cookies } from "next/headers";
 
 interface PageProps {
@@ -24,6 +23,7 @@ export default async function Page({ params }: PageProps) {
   const sessionCookie = (await cookies()).get("sessionId")?.value;
 
   const reconstructedURL = reconstructUrl({ url: params?.url as string[] });
+
   const sessionId = (reconstructedURL + "__" + sessionCookie).replace(
     /\//g,
     ""

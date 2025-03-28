@@ -29,17 +29,24 @@ export function ChatInput({
       <div className="mx-2 flex flex-row gap-3 md:mx-4 md:last:mb-6 w-full max-w-[50rem]">
         <figure className="relative flex h-full flex-1 items-stretch md:flex-col">
           <section className="relative flex flex-col w-full">
-            <form className="relative" onSubmit={handleSubmit}>
+            <form
+              data-testid="form-test-id"
+              className="relative"
+              onSubmit={handleSubmit}
+            >
               <Textarea
                 autoFocus
+                data-testid="textarea-test-id"
                 onChange={handleInputChange}
                 value={input}
                 style={{ background: "transparent" }}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    handleSubmit();
-                    setInput("");
+                  if (status !== "submitted") {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSubmit();
+                      setInput("");
+                    }
                   }
                 }}
                 placeholder="Ask anything"
@@ -47,6 +54,8 @@ export function ChatInput({
               />
               <Button
                 type="submit"
+                data-testid="button-test-id"
+                disabled={status === "submitted"}
                 isLoading={status === "submitted"}
                 className="absolute text-black z-10 border size-12 border-border bg-white right-2 bottom-8 rounded-full shadow-2xl shadow-amber-50 cursor-pointer"
               >

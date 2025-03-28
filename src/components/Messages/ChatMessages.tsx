@@ -1,14 +1,28 @@
 import { type Message as TMessage } from "ai/react";
 import { MessageBox } from "./component/MessageBox/MessageBox";
 import { TStatus } from "../Wrapper/ChatWrapper";
+import { useEffect, useRef } from "react";
 interface IMessagesProps {
   messages: TMessage[];
   status: TStatus;
 }
 
-export function ChatMessages({ messages }: IMessagesProps) {
+export function ChatMessages({ messages, status }: IMessagesProps) {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if ((status === "streaming" || status === "submitted") && ref.current) {
+      ref.current.scrollTo({
+        top: ref.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [status, messages]);
   return (
-    <main className="flex max-h-[calc(100vh-13rem)] flex-1 flex-col overflow-y-auto">
+    <main
+      ref={ref}
+      className="flex max-h-[calc(100vh-13rem)] flex-1 flex-col overflow-y-auto"
+    >
       {messages.length > 0 ? (
         messages.map((message, i) => (
           <MessageBox

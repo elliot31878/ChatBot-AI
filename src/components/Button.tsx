@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { mergeRefs } from "@/utils/mergeRefs";
 import { cn } from "@/utils/cn";
-import { IterationCcw, Square } from "lucide-react";
+import { Square } from "lucide-react";
 import { RippleEffect } from "./Ripple";
 
 const buttonVariants = cva(
@@ -123,7 +123,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             mode={variant === "filled" ? "dark" : "light"}
           />
         )}
-        {isLoading ? <Square className="mx-auto size-5" /> : children}
+        {isLoading ? (
+          <Square data-testid="loading-icon" className="mx-auto size-5" />
+        ) : (
+          children
+        )}
       </Comp>
     );
   }
