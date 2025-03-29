@@ -1,5 +1,4 @@
 import { ChatWrapper } from "@/components/Wrapper/ChatWrapper";
-import { ragChat } from "@/lib/rag-chat";
 import { cookies } from "next/headers";
 
 interface PageProps {
@@ -29,12 +28,5 @@ export default async function Page({ params }: PageProps) {
     ""
   );
 
-  const messagesInHistory = await ragChat.history.getMessages({
-    amount: 10,
-    sessionId,
-  });
-
-  return (
-    <ChatWrapper sessionId={sessionId} defaultMessages={messagesInHistory} />
-  );
+  return <ChatWrapper sessionId={sessionId} defaultMessages={[]} />;
 }

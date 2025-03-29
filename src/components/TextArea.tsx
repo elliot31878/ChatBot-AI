@@ -2,8 +2,8 @@ import * as React from "react";
 
 import { VariantProps, cva } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
 import { mergeRefs } from "@/utils/mergeRefs";
+import { cn } from "@/utils/cn";
 
 const textareaClassName =
   "peer flex size-full resize-none grow appearance-none border-none bg-white outline-none disabled:cursor-not-allowed";

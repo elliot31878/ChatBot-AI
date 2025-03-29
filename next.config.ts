@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    INFACTORY_API_KEY: process.env.INFACTORY_API_KEY,
+  },
 };
 
 export default nextConfig;

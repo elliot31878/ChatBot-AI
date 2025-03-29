@@ -5,8 +5,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { mergeRefs } from "@/utils/mergeRefs";
 import { cn } from "@/utils/cn";
-import { Square } from "lucide-react";
 import { RippleEffect } from "./Ripple";
+import { StopIcon } from "@/common/icons/StopIcon";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap font-normal outline-none transition-colors *:shrink-0 disabled:cursor-not-allowed",
@@ -124,7 +124,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           />
         )}
         {isLoading ? (
-          <Square data-testid="loading-icon" className="mx-auto size-5" />
+          <StopIcon data-testid="loading-icon" className="mx-auto size-5" />
         ) : (
           children
         )}
