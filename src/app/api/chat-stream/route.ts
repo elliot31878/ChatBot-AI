@@ -193,7 +193,6 @@ export async function POST(req: NextRequest) {
   const matchedEndpoint = ENDPOINT_MAP.find((item) =>
     item.pattern.test(lastMessage)
   );
-  console.log("isMatch", matchedEndpoint);
   if (matchedEndpoint) {
     try {
       const url = new URL(matchedEndpoint.endpoint);
@@ -233,8 +232,9 @@ async function handleRagChat(message: string, sessionId: string) {
   const response = await ragChat.chat(message, {
     streaming: true,
     sessionId,
+    disableHistory: true,
   });
-  console.log("response=> ", response);
+
   return aiUseChatAdapter(response);
 }
 
