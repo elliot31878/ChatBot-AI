@@ -152,7 +152,7 @@ const ENDPOINT_MAP: EndpointConfig[] = [
   },
   {
     pattern:
-      /average fare.*duration range|rides between.*minutes|trip duration 5 to 10 minutes/i,
+      /average total fare.*between 5 and 10 minutes|average fare.*5 to 10 minutes|rides lasting 5-10 minutes.*fare|what is the fare.*5 and 10 minute rides|total fare.*duration between 5 and 10/i,
     endpoint:
       "https://api.infactory.ai/live/average_tip_percentage_comparison/v1/calculate_average_total_fare_for_rides_with_trip_duration_between_specified_range",
     params: {

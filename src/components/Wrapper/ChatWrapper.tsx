@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 import { CHAT_API_URL } from "@/constants/chat.constant";
 
@@ -12,13 +12,25 @@ import ErrorBar from "../ErrorBar/ErrorBar";
 export type TStatus = ReturnType<typeof useChat>["status"];
 export type TError = ReturnType<typeof useChat>["error"];
 
-export function ChatWrapper({
-  sessionId,
-  defaultMessages,
-}: {
-  sessionId: string;
-  defaultMessages: Message[];
-}) {
+interface IHistoryMessageList {
+  key: string;
+  messages: Message[];
+}
+
+export function ChatWrapper({ sessionId }: { sessionId: string }) {
+  const [defaultMessages, setDefaultMessages] = useState<Message[]>([]);
+  useLayoutEffect(() => {
+    const messagesHistory = String(localStorage.getItem("messages"));
+    const messages = JSON.parse(messagesHistory) as IHistoryMessageList[];
+
+    console.log("session=> ", sessionId, messages);
+    const getMessage: Message[] =
+      messagesHistory?.length > 0
+        ? (messages?.find((item) => item.key === sessionId)
+            ?.messages as Message[])
+        : [];
+    setDefaultMessages(getMessage);
+  }, [sessionId]);
   const {
     messages,
     handleInputChange,
@@ -32,6 +44,23 @@ export function ChatWrapper({
     body: { sessionId },
     initialMessages: defaultMessages,
   });
+
+  useEffect(() => {
+    const value = localStorage.getItem("messages");
+    if (value) {
+      let prevData = JSON.parse(value) as IHistoryMessageList[];
+
+      prevData = prevData.filter((item) => item.key !== sessionId);
+      prevData.push({ key: sessionId, messages });
+
+      localStorage.setItem("messages", JSON.stringify(prevData));
+    } else {
+      localStorage.setItem(
+        "messages",
+        JSON.stringify([{ key: sessionId, messages }])
+      );
+    }
+  }, [messages, sessionId]);
 
   return (
     <main className="relative min-h-full bg-zinc-800 flex divide-y divide-zinc-700 flex-col justify-between gap-2 pt-4">
