@@ -11,6 +11,9 @@ dependencies:
   '@ai-sdk/react':
     specifier: ^1.2.2
     version: 1.2.2(react@19.0.0)(zod@3.24.2)
+  '@lottiefiles/react-lottie-player':
+    specifier: ^3.6.0
+    version: 3.6.0(react@19.0.0)
   '@radix-ui/react-slot':
     specifier: ^1.1.2
     version: 1.1.2(@types/react@19.0.0)(react@19.0.0)
@@ -26,9 +29,6 @@ dependencies:
   clsx:
     specifier: ^2.1.1
     version: 2.1.1
-  lucide-react:
-    specifier: ^0.484.0
-    version: 0.484.0(react@19.0.0)
   next:
     specifier: 15.2.4
     version: 15.2.4(@babel/core@7.26.10)(@playwright/test@1.51.1)(react-dom@19.0.0)(react@19.0.0)
@@ -1800,6 +1800,15 @@ packages:
     dependencies:
       '@langchain/core': 0.3.43(openai@4.89.1)
       js-tiktoken: 1.0.19
+    dev: false
+
+  /@lottiefiles/react-lottie-player@3.6.0(react@19.0.0):
+    resolution: {integrity: sha512-WK5TriLJT93VF3w4IjSVyveiedraZCnDhKzCPhpbeLgQeMi6zufxa3dXNc4HmAFRXq+LULPAy+Idv1rAfkReMA==}
+    peerDependencies:
+      react: 16 - 19
+    dependencies:
+      lottie-web: 5.12.2
+      react: 19.0.0
     dev: false
 
   /@mistralai/mistralai@0.4.0:
@@ -6289,18 +6298,14 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
+  /lottie-web@5.12.2:
+    resolution: {integrity: sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==}
+    dev: false
+
   /lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
     dependencies:
       yallist: 3.1.1
-
-  /lucide-react@0.484.0(react@19.0.0):
-    resolution: {integrity: sha512-oZy8coK9kZzvqhSgfbGkPtTgyjpBvs3ukLgDPv14dSOZtBtboryWF5o8i3qen7QbGg7JhiJBz5mK1p8YoMZTLQ==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-    dependencies:
-      react: 19.0.0
-    dev: false
 
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
