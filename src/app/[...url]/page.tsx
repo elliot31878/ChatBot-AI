@@ -1,4 +1,5 @@
 import { ChatWrapper } from "@/components/Wrapper/ChatWrapper";
+
 import { cookies } from "next/headers";
 
 interface PageProps {
@@ -19,14 +20,12 @@ export default async function Page({ params }: PageProps) {
   if (!params?.url) {
     return null;
   }
-  const sessionCookie = (await cookies()).get("sessionId")?.value;
-
+  const sessionCookie = (await cookies()).get("session-id")?.value;
   const reconstructedURL = reconstructUrl({ url: params?.url as string[] });
 
   const sessionId = (reconstructedURL + "__" + sessionCookie).replace(
     /\//g,
     ""
   );
-
-  return <ChatWrapper sessionId={sessionId} defaultMessages={[]} />;
+  return <ChatWrapper sessionId={sessionId} />;
 }
