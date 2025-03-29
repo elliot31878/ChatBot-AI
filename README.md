@@ -1,7 +1,8 @@
 # Chatbot AI
 
-![Chatbot AI](![image](https://github.com/user-attachments/assets/6c29079e-998e-4a2c-ace0-613de12e34d3)
-)  
+![image](https://github.com/user-attachments/assets/37a48b3c-ba76-49e0-8913-5f30c1c64102)
+
+
 A powerful AI-driven chatbot built with Next.js, AI SDK, and Upstash RAG.
 
 ## 🚀 Features
