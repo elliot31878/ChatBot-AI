@@ -59,9 +59,17 @@ pnpm test
 Create a `.env.local` file and add the following environment variables:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key
-UPSTASH_REDIS_URL=your_upstash_redis_url
-UPSTASH_REDIS_TOKEN=your_upstash_redis_token
+UPSTASH_VECTOR_REST_URL=your upstash_vector_url
+UPSTASH_VECTOR_REST_TOKEN=your upstash_vector_rest_token
+
+UPSTASH_REDIS_URL=your upstash_redis_url
+UPSTASH_REDIS_TOKEN=your upstash_redis_token
+
+QSTASH_URL=your qstash_url
+QSTASH_TOKEN=your qstash_token
+
+QSTASH_CURRENT_SIGNING_KEY=your qstash_key
+QSTASH_NEXT_SIGNING_KEY=your qstash_next_key
 ```
 
 ## 📂 Project Structure
@@ -96,4 +104,3 @@ This project is licensed under the MIT License.
 
 ---
 
-Made with ❤️ by Darlene
