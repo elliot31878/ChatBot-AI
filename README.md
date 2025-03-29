@@ -1,13 +1,14 @@
 # Chatbot AI
 
-![Chatbot AI](https://via.placeholder.com/100x100.png)  
+![Chatbot AI](![image](https://github.com/user-attachments/assets/6c29079e-998e-4a2c-ace0-613de12e34d3)
+)  
 A powerful AI-driven chatbot built with Next.js, AI SDK, and Upstash RAG.
 
 ## 🚀 Features
 
 - **AI-Powered Conversations** - Uses OpenAI for natural language processing.
 - **Next.js & React 19** - Leverages the latest Next.js features with App Router.
-- **Upstash RAG & Redis** - Enables efficient retrieval-augmented generation and caching.
+- **Upstash RAG ** - Enables efficient retrieval-augmented generation and caching.
 - **ShadCN UI & TailwindCSS** - Provides a beautiful, modern UI.
 - **Optimized Performance** - Uses TurboPack and efficient list virtualization.
 - **Testing with Jest & React Testing Library** - Ensures reliability.
@@ -62,14 +63,13 @@ Create a `.env.local` file and add the following environment variables:
 UPSTASH_VECTOR_REST_URL=your upstash_vector_url
 UPSTASH_VECTOR_REST_TOKEN=your upstash_vector_rest_token
 
-UPSTASH_REDIS_URL=your upstash_redis_url
-UPSTASH_REDIS_TOKEN=your upstash_redis_token
-
 QSTASH_URL=your qstash_url
 QSTASH_TOKEN=your qstash_token
 
 QSTASH_CURRENT_SIGNING_KEY=your qstash_key
 QSTASH_NEXT_SIGNING_KEY=your qstash_next_key
+
+INFACTORY_API_KEY=your infactory_api_key
 ```
 
 ## 📂 Project Structure
@@ -77,6 +77,7 @@ QSTASH_NEXT_SIGNING_KEY=your qstash_next_key
 ```
 ├── src
 │   ├── components   # UI Components
+│   ├── common       # Common 
 │   ├── pages        # Next.js App Router Pages
 │   ├── hooks        # Custom Hooks
 │   ├── utils        # Utility Functions
