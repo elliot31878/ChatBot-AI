@@ -1,22 +1,38 @@
+import { useEffect, useState } from "react";
 import { ChatWrapper } from "@/components/Wrapper/ChatWrapper";
 import { cookies } from "next/headers";
 
-export default async function Page({
+export default function Page({
   params,
 }: {
   params: Promise<{ url?: string[] }>;
 }) {
-  const { url } = await params;
+  const [isClient, setIsClient] = useState(false);
 
-  if (!url) return null;
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-  const sessionCookie = (await cookies()).get("session-id")?.value || "";
-  const reconstructedURL = url.map(decodeURIComponent).join("/");
+  const [sessionId, setSessionId] = useState("");
 
-  const sessionId = (reconstructedURL + "__" + sessionCookie).replace(
-    /\//g,
-    ""
-  );
+  useEffect(() => {
+    const fetchSessionId = async () => {
+      const { url } = await params;
+      if (!url) return;
+
+      const sessionCookie = (await cookies()).get("session-id")?.value || "";
+      const reconstructedURL = url.map(decodeURIComponent).join("/");
+      const session = (reconstructedURL + "__" + sessionCookie).replace(
+        /\//g,
+        ""
+      );
+      setSessionId(session);
+    };
+
+    fetchSessionId();
+  }, [params]);
+
+  if (!isClient || !sessionId) return null;
 
   return <ChatWrapper sessionId={sessionId} />;
 }
