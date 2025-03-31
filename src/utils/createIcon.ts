@@ -1,9 +1,9 @@
-import React, { JSX, ReactNode, SVGProps } from "react";
+import React, { JSX, SVGProps } from "react";
 
-export type SvgComponent = (props: SVGProps<SVGSVGElement>) => ReactNode;
+export type SvgComponent = (props: SVGProps<SVGSVGElement>) => JSX.Element;
 
 export function createIcon(SvgElement: JSX.Element): SvgComponent {
-  return function Icon(props) {
+  return function Icon(props: SVGProps<SVGSVGElement>) {
     return React.cloneElement(SvgElement, props);
   };
 }
