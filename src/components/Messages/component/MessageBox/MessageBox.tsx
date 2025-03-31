@@ -44,7 +44,7 @@ export function MessageBox({ content, isUserMessage, id }: IMessageBoxProps) {
             <section className="flex flex-col w-full min-w-20">
               <figure className="flex items-center space-x-2">
                 <span className="text-sm font-semibold">
-                  {isUserMessage ? "You" : "Elliot"}
+                  {isUserMessage ? "You" : "Bot"}
                 </span>
               </figure>
               <span className="text-sm font-medium py-2.5">{content}</span>
