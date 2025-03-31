@@ -17,7 +17,7 @@ interface IHistoryMessageList {
   messages: Message[];
 }
 
-export function ChatWrapper({ sessionId }: { sessionId: string }) {
+export default function ChatWrapper({ sessionId }: { sessionId: string }) {
   const [defaultMessages, setDefaultMessages] = useState<Message[]>([]);
   useLayoutEffect(() => {
     const messagesHistory = String(localStorage.getItem("messages"));

@@ -1,38 +1,22 @@
-import { useEffect, useState } from "react";
-import { ChatWrapper } from "@/components/Wrapper/ChatWrapper";
 import { cookies } from "next/headers";
+import ChatWrapperClient from "@/components/Wrapper/ChatWrapperClient"; // Import the client-side component
 
-export default function Page({
+export default async function Page({
   params,
 }: {
   params: Promise<{ url?: string[] }>;
 }) {
-  const [isClient, setIsClient] = useState(false);
+  const { url } = await params;
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  if (!url) return null;
 
-  const [sessionId, setSessionId] = useState("");
+  const sessionCookie = (await cookies()).get("session-id")?.value || "";
+  const reconstructedURL = url.map(decodeURIComponent).join("/");
 
-  useEffect(() => {
-    const fetchSessionId = async () => {
-      const { url } = await params;
-      if (!url) return;
+  const sessionId = (reconstructedURL + "__" + sessionCookie).replace(
+    /\//g,
+    ""
+  );
 
-      const sessionCookie = (await cookies()).get("session-id")?.value || "";
-      const reconstructedURL = url.map(decodeURIComponent).join("/");
-      const session = (reconstructedURL + "__" + sessionCookie).replace(
-        /\//g,
-        ""
-      );
-      setSessionId(session);
-    };
-
-    fetchSessionId();
-  }, [params]);
-
-  if (!isClient || !sessionId) return null;
-
-  return <ChatWrapper sessionId={sessionId} />;
+  return <ChatWrapperClient sessionId={sessionId} />;
 }
